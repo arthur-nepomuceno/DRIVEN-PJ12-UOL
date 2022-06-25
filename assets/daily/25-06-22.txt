@@ -1,0 +1,18 @@
+======================================================================================
+=================================================================== 25/06/22 - Sábado.
+INÍCIO: 14:40 ========================================================================
+======================================================================================
+QQQ
+
+ETAPA: post/participants
+
+01. Receber um novo participante pelo body da request. -OK
+    - lembrar de usar o JSON parser do express para que ele consiga fazer a leitura
+      da infomação recebida no envio para o servidor. -ok
+    - usar o ThunderClient para verificar se o servidor está funcionando. -ok
+      basta simular o envio de um body pela requisição "POST". -ok
+    - retornar o status 201 em caso de sucesso. -ok
+    - instalar a biblioteca "joi" para validação -ok
+    - criar o "validationSchema" para validação -ok
+
+02. Salvar a informação do novo participante no banco de dados.

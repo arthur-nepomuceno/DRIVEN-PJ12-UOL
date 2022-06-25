@@ -1,0 +1,49 @@
+======================================================================================
+==================================================================== 24/06/22 - Sexta.
+INÍCIO: 17:26 ========================================================================
+======================================================================================
+QQQ
+
+Um resumo do que estou entendendo até agora.
+
+- Um servidor existe para prover ("servir") informações ao front-end.
+- Um banco de dados é onde as informações ficam guardadas.
+- É necessário criar uma conexão entre o servidor e o banco de dados.
+- É necessário criar uma conexão entre o front-end e o servidor.
+- O servidor faz uma ponte entre o banco de dados e o front-end.
+
+- Existem inicialmente 4 tipos de requisições que eu posso fazer:
+    POST: criar novos registros.
+    GET: ler o que já foi registrado.
+    PUT: editar registros que já existem.
+    DELETE: apagar registros.
+
+- Posso resumir esses 4 tipos em uma sigla: CRUD.
+    C = Create (post).
+    R = Read (get).
+    U = update (put).
+    D = delete (delete).
+
+- Toda requisição pode ser feita passando informações sobre um elemento específico.
+        - essas informações podem vir pelo "body" da requisição;
+        - ou elas podem vir pelo parâmetro passado na rota da requisição;
+          (parâmetros de rota OU query strings)
+
+- Dentro de cada requisição acontece uma rotina diferente que depende do tipo
+  da requisição:
+
+  - em uma requisição tipo "GET" meu objetivo é disponibilizar para o usuário
+    aquilo que ele está pedindo para ver.
+  - em uma requisição tipo POST meu objetivo é criar um novo registro a partir
+    da informação que está sendo enviada no corpo da requisição.
+  - em uma requisição tipo PUT meu objetivo é atualizar um registro que já existe,
+    a partir daquilo que está sendo enviado no corpo d requisição.
+  - em uma requisição tipo DELETE meu objetivo é remover um registro 
+    a partir da informação que está sendo enviada no corpo da requisição.
+
+- O front-end faz um pedido.
+  O servidor recebe o pedido. 
+  O servidor acessa o banco de dados.
+  O servidor disponibiliza as informações.
+  O código age sobre as infomações mediante o tipo de requisição 
+  (get, post, put or delete).
