@@ -36,3 +36,10 @@ TOTAL - 01:10
 !PENDENTE 
     - passar a informação de conexão com o mongo para uma variável de ambient
         - usar .env
+
+!PRÓXIMO  
+    - verificar se já existe um participante com o nome de entrada e impedir
+      a entrada caso já exista. 
+        - vou precisar vasculhar o banco de dados e retornar
+          um true ou um false dependendo do que acontecer. lembrando que sempre que eu
+          faço uma requisição para o banco de dados, eu tô lidando com uma promise.

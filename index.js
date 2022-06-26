@@ -16,30 +16,40 @@ mongoClient.connect().then(() => {
 server.use(express.json());
 
 server.post("/participants", (request, response) => {
-    
-    //receiving info
+    //gathering meaningfull data
     const body = request.body;
-
-    //creating validation schema
+    const lastStatus = Date.now();
+    //developing validation schema
     const nameSchema = joi.object({name: joi.string().required()});
-
-    //validating
     const validation = nameSchema.validate(body, {abortEarly: false});
+    //verifying if name already exists
+    let isThereName = false;
+    db.collection("participants").find({name: body.name}).toArray().then((participant) => {
+        if(participant.length > 0){
+            isThereName = true;
+        }
 
-    //stablishing conditions
+        console.log(participant);
+        console.log(participant.length)
+        console.log(isThereName)
+    });
+    // returning server answers
     if(validation.error){
-        response.status(422).send("Something went wrong :/")
+        response.status(422)
+                .send("Something went wrong :/");
     } else {
-        db.collection("participants").insert({body}) //saving participant on data base
-        response.status(201).send(`Welcome, ${body.name}!`) 
+        db.collection("participants")
+          .insertOne({name: body.name, lastStatus: lastStatus});
+
+        response.status(201)
+                .send(`Welcome, ${body.name}! ${isThereName}`);
     }
 })
 
 server.get("/participants", (request, response) => {
     db.collection("participants").find().toArray().then((participant) => {
-        console.log(participant);
+        response.send(participant);
     })
-    response.send("ok")
 })
 
 server.listen(5000);
