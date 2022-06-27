@@ -1,2 +1,3 @@
-/node_modules
 /daily
+/node_modules
+.env
